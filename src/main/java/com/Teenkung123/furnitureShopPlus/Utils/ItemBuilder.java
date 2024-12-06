@@ -112,11 +112,11 @@ public class ItemBuilder {
 
     public ItemStack getItemStack() {
         ItemStack stack;
-        if (type.equalsIgnoreCase("ItemsAdder")) {
-            stack = CustomStack.getInstance(material).getItemStack();
-        } else {
+        if (type.equalsIgnoreCase("Vanilla")) {
             //noinspection DataFlowIssue
             stack = new ItemStack(Material.getMaterial(material));
+        } else {
+            stack = CustomStack.getInstance(material).getItemStack();
         }
         stack.setAmount(amount);
         stack.editMeta(itemMeta -> {

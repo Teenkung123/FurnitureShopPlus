@@ -82,6 +82,8 @@ public final class FurnitureShopPlus extends JavaPlugin {
         previewTimer.stop();
         previewTimer.removeFurniture();
 
+        reloadConfig();
+
         configLoader = new ConfigLoader(this);
         configLoader.loadConfig();
         messageLoader.loadMessages();
