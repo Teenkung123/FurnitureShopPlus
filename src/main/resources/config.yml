@@ -1,0 +1,79 @@
+ShopGUI:
+  Name: Furniture Shop
+  LayoutPattern:
+    - BBBBBBBBB
+    - BFFFFFFFB
+    - BFFFFFFFB
+    - BFFFFFFFB
+    - BFFFFFFFB
+    - BBBBBBBBB
+  Layout:
+    B:
+      Type: VANILLA
+      Material: BLACK_STAINED_GLASS_PANE
+      DisplayName: ''
+      Lore: []
+      #amount: 1
+      #modelData: 0
+    F:
+      Type: VANILLA
+      Material: WHITE_STAINED_GLASS_PANE
+      DisplayName: ''
+      Lore: []
+      #amount: 1
+      #modelData: 0
+
+ConfirmGUI:
+  Name: Confirm Purchase
+  LayoutPattern:
+    - BBBBBBBBB
+    - BDDDPAAAB
+    - BBBBBBBBB
+  Layout:
+    B:
+      Type: VANILLA
+      Material: BLACK_STAINED_GLASS_PANE
+      DisplayName: ''
+      Lore: []
+      #amount: 1
+      #modelData: 0
+    D:
+      Type: VANILLA
+      Material: RED_STAINED_GLASS_PANE
+      DisplayName: ''
+      Lore: []
+      #amount: 1
+      #modelData: 0
+    A:
+      Type: VANILLA
+      Material: GREEN_STAINED_GLASS_PANE
+      DisplayName: ''
+      Lore: []
+      #amount: 1
+      #modelData: 0
+    P:
+        Type: VANILLA
+        Material: PAPER
+        DisplayName: '&aPreview'
+        Lore: []
+        #amount: 1
+        #modelData: 0
+
+Shop:
+  #Shop Display Location [x, y, z]
+  DisplayLocation: [0, 0, 0]
+  DisplayWorld: world
+  #Worldguard Region
+  WorldguardRegion: 'FurnitureShop'
+  #Display Interval in Ticks
+  DisplayInterval: 100
+  #Should the shop stop random display when player are nearby
+  PauseDisplayRange: 5
+  ShopArea: [10,11,12,13,14,15,16,19,20,21,22,23,24,25,28,29,30,31,32,33,34,37,38,39,40,41,42,43]
+  PrevPage: [45]
+  NextPage: [53]
+
+Confirm:
+  Deny: [10, 11, 12]
+  Accept: [14, 15, 16]
+  Preview: [13]

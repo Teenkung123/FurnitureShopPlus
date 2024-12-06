@@ -1,0 +1,4372 @@
+#This is config of Furniture Shop Plugin
+
+#Will plugin use PlayerPoints plugin as main currency? if PlayerPoints plugin is not installed it will use Vault instead
+usePlayerPoints: false
+
+#Location of Preview Furniture and WorldGuard Region to define where shop area is
+Location:
+  #World guard Area defines where shop area is (where player able to LeftClick to open shop)
+  Region: furniture
+  #Location defines where Furniture preview is
+  Preview:
+    World: spawn
+    X: 289.5
+    Y: -10
+    Z: -132.5
+  #if amount of player in this radius is less than 1 the system will not preview the furniture
+  checkDistance: 20
+
+Items:
+  NextPage:
+    Item: PAPER
+    Name: "&aNext Page"
+    Lore: []
+    ModelData: 10802
+  PreviousPage:
+    Item: PAPER
+    Name: "&cPrevious Page"
+    Lore: []
+    ModelData: 10801
+  Accept:
+    Item: PAPER
+    Name: "&f胧 &aยืนยันการซื้อ"
+    Lore: []
+    ModelData: 10806
+  Deny:
+    Item: PAPER
+    Name: "&f胈 &cยกเลิกการซื้อ"
+    Lore: []
+    ModelData: 10804
+  BuyWithPoints:
+    Item: MAGENTA_STAINED_GLASS_PANE
+    Name: "&f胧 &dซื้อด้วยพ้อย"
+    Lore: []
+    ModelData: 0
+  BuyWithVault:
+    Item: LIME_STAINED_GLASS_PANE
+    Name: "&f胧 &aซื้อด้วยเงิน"
+    Lore: []
+    ModelData: 0
+
+Language:
+  #Hex color format is #ffffff
+  #Example: 
+  PlayerPoints: 10
+  Vault: #ff0000<price>
+  #Available Placeholder: <price>
+
+  #Lore in main shop
+  Shop-Lore:
+    - ' '
+    - '&f &eคลิกซ้าย: &fเพื่อดูตัวอย่างเฟอร์นิเจอร์'
+    - '&aSHIFT &f+  &eคลิกซ้าย &bเพื่อทำการซื้อ'
+
+  #Lore in confirmation page
+  Confirmation-Lore:
+    - ' '
+    - '&fนี่คือไอเท็มที่คุณต้องการซื้อหรือไม่'
+    - '&f胧 หากซื้อ ให้กดปุ่ม &aสีเขียว &fและทำการซื้อ'
+    - '&f胈 หากไม่ซื้อ ให้กดปุ่ม &cสีแดง &fและทำการยกเลิก'
+
+  #Message that will send to player when they have not enough inventory
+  Not-Enough-Inventory: '&f &cช่องเก็บของในตัวคุณไม่เพียงพอ'
+  #Message that will send to player when they have not enough money
+  Not-Enough-Money: '&f &cไม่สามารถซื้อได้เนื่องจากคุณมีเงินไม่เพียงพอ!'
+  #Message that will sebd to player when they buy a furniture
+  Succeeded: '&f &aคุณได้ซื้อ &e<item> &aเรียบร้อยแล้ว!'
+  #Message that will send to player when they press preview mode button
+  Preview-Message: '&f &aคุณได้เริ่มการดูตัวอย่างของ &e<item> &aแล้ว'
+
+  #Confirmation page GUI Name
+  Confirmation-GUI-Name: '&1Buying Confirmation'
+  #Main shop GUI Name
+  Shop-GUI-Name: '&f'
+    #Vault currency
+  Vault: $
+  #PlayerPoints Currency
+  PlayerPoints: พ้อย
+  #Single Currency
+  Single: '&fราคา &e<price>'
+  #Supports both currency
+  Both: "&e<vault> &fหรือ &d<playerpoints>"
+
+
+#This defines what item will show in the main shop (only support ItemsAdder)
+#Example
+#Shop:
+# Example:
+#   ID: namespace:myitem
+#   Currency: PlayerPoints (Available PlayerPoints, Vault, Both)
+#   Vault: 1000
+#   PlayerPoints: 10
+Shop:
+  'bedroom1':
+    ID: lzfurniture:bedroom_nightstand
+    Currency: Vault #PlayerPoints, Both
+    PlayerPoints: 10
+    Vault: 3500
+  'bedroom2':
+    ID: lzfurniture:bedroom_bed
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'bedroom3':
+    ID: lzfurniture:bedroom_carpet
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'bedroom4':
+    ID: lzfurniture:bedroom_clock
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'bedroom5':
+    ID: lzfurniture:bedroom_mirror
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'bedroom6':
+    ID: lzfurniture:bedroom_picture_1x1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'bedroom7':
+    ID: lzfurniture:bedroom_picture_2x1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'bedroom8':
+    ID: lzfurniture:bedroom_clothing_cabinet_closed
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'bedroom9':
+    ID: lzfurniture:bedroom_clothing_cabinet
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'bedroom10':
+    ID: lzfurniture:bedroom_clothing_rail
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'bedroom11':
+    ID: lzfurniture:bedroom_lamp
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'bedroom12':
+    ID: lzfurniture:bedroom_sideboard
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant1':
+    ID: lzfurniture:plants_big_bonsai
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant2':
+    ID: lzfurniture:plants_big_bowhemp
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant3':
+    ID: lzfurniture:plants_big_cactus
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant4':
+    ID: lzfurniture:plants_big_ficustree
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant5':
+    ID: lzfurniture:plants_big_fiddleleaffig
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant6':
+    ID: lzfurniture:plants_big_fir
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant7':
+    ID: lzfurniture:plants_big_monstera
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant8':
+    ID: lzfurniture:plants_big_sagopalm
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant9':
+    ID: lzfurniture:plants_box_tulips
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant10':
+    ID: lzfurniture:plants_bigbox_violets
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant11':
+    ID: lzfurniture:plants_bigbox_tulips
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant12':
+    ID: lzfurniture:plants_box_violets
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant13':
+    ID: lzfurniture:plants_small_aralia
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant14':
+    ID: lzfurniture:plants_small_fir
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant15':
+    ID: lzfurniture:plants_small_tulip
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant16':
+    ID: lzfurniture:plants_small_violet
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant17':
+    ID: lzfurniture:plants_hanging_daisy
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant18':
+    ID: lzfurniture:plants_hanging_pothos
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'plant19':
+    ID: lzfurniture:plants_vines_flowering
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '2':
+    ID: magic_store:scarecrow
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '3':
+    ID: magic_store:oaklog
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '4':
+    ID: magic_store:oaktree
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '5':
+    ID: magic_store:oakplant
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '6':
+    ID: magic_store:oakplant2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '7':
+    ID: magic_store:oakplank
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '8':
+    ID: magic_store:oakplank_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '9':
+    ID: magic_store:oakplank_3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '10':
+    ID: magic_store:stone
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '11':
+    ID: magic_store:stone2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '12':
+    ID: magic_store:stone3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '13':
+    ID: magic_store:oakchair
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '14':
+    ID: magic_store:oakchair_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '15':
+    ID: magic_store:oakchair_3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '16':
+    ID: magic_store:oakplank_4
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '17':
+    ID: magic_store:oakfench
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '18':
+    ID: magic_store:oakminilog
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '19':
+    ID: magic_store:oakstick
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '20':
+    ID: magic_store:oaktree2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '21':
+    ID: magic_store:oaktree3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '22':
+    ID: magic_store:scarecrow2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '23':
+    ID: magic_store:oakchair4
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '24':
+    ID: magic_store:oakchair5
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '25':
+    ID: japanese_furniture:anime_poster_1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '26':
+    ID: japanese_furniture:anime_poster_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '27':
+    ID: japanese_furniture:daruma
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '28':
+    ID: japanese_furniture:japanese_art_1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '29':
+    ID: japanese_furniture:japanese_art_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '30':
+    ID: japanese_furniture:japanese_ceiling_lamp
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '31':
+    ID: japanese_furniture:japanese_chair
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '32':
+    ID: japanese_furniture:japanese_crate
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '33':
+    ID: japanese_furniture:japanese_floor_lamp
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '34':
+    ID: japanese_furniture:japanese_folding_screen
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '35':
+    ID: japanese_furniture:japanese_key
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '36':
+    ID: japanese_furniture:japanese_lower_table
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '37':
+    ID: japanese_furniture:japanese_screen
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '38':
+    ID: japanese_furniture:japanese_table
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '39':
+    ID: japanese_furniture:japanese_tall_lamp
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '40':
+    ID: japanese_furniture:ofuro
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '41':
+    ID: japanese_furniture:teru_teru_bozu
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '42':
+    ID: japanese_furniture:zabuton
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '43':
+    ID: japanese_furniture:bamboo_vase
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '44':
+    ID: japanese_furniture:bonsai
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '45':
+    ID: japanese_furniture:dango_plushie
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '46':
+    ID: japanese_furniture:japanese_tea_set
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '47':
+    ID: japanese_furniture:kimono_decoration
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '327':
+    ID: maii:blockf01
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '328':
+    ID: maii:blockf02
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '329':
+    ID: maii:blockf03
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '330':
+    ID: maii:blockf04
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '331':
+    ID: maii:blockf05
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '332':
+    ID: maii:blockf06
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '333':
+    ID: maii:blockf07
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '334':
+    ID: maii:blockf08
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '335':
+    ID: maii:blockf09
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '336':
+    ID: maii:blockf10
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '337':
+    ID: maii:blockf11
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '338':
+    ID: maii:blockf12
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '339':
+    ID: maii:blockf13
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '340':
+    ID: maii:blockf14
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '341':
+    ID: maii:blockf15
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '342':
+    ID: maii:blockf16
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '343':
+    ID: maii:blockf17
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '344':
+    ID: maii:blockf18
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '345':
+    ID: maii:blockf19
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '346':
+    ID: maii:blockf20
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '347':
+    ID: maii:blockf21
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '348':
+    ID: maii:blockf22
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '349':
+    ID: maii:blockf23
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '350':
+    ID: maii:blockf24
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '351':
+    ID: maii:blockf25
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '352':
+    ID: maii:blockf26
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '353':
+    ID: maii:blockf27
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '354':
+    ID: maii:blockf28
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '355':
+    ID: maii:blockf29
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '356':
+    ID: maii:blockf30
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '357':
+    ID: maii:blockf31
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '358':
+    ID: maii:blockf32
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '359':
+    ID: maii:blockf33
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '360':
+    ID: maii:blockf34
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '361':
+    ID: maii:blockf35
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '362':
+    ID: maii:blockf36
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '363':
+    ID: maii:blockf37
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '364':
+    ID: maii:blockf38
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '365':
+    ID: maii:blockf39
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '366':
+    ID: maii:blockf40
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '367':
+    ID: maii:blockf41
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '368':
+    ID: maii:blockf42
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '369':
+    ID: maii:blockf43
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '370':
+    ID: maii:blockf44
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '371':
+    ID: maii:blockf45
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '372':
+    ID: maii:blockf46
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '373':
+    ID: maii:blockf47
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '374':
+    ID: maii:blockf48
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '375':
+    ID: maii:blockf49
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '376':
+    ID: maii:blockf50
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '377':
+    ID: maii:blockf51
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '378':
+    ID: maii:blockf52
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '379':
+    ID: maii:blockf53
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '380':
+    ID: maii:blockf54
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '381':
+    ID: maii:blockf55
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '382':
+    ID: maii:blockf56
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '383':
+    ID: maii:blockf57
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '384':
+    ID: maii:blockf58
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '385':
+    ID: maii:blockf59
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '386':
+    ID: maii:blockf60
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '387':
+    ID: maii:blockf61
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '388':
+    ID: maii:blockf62
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '389':
+    ID: maii:blockf63
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '390':
+    ID: maii:blockf64
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '391':
+    ID: maii:blockf65
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '392':
+    ID: maii:blockf66
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '393':
+    ID: maii:blockf67
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '394':
+    ID: maii:blockf68
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '395':
+    ID: maii:blockf69
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '396':
+    ID: maii:blockf70
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '397':
+    ID: maii:blockf71
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '398':
+    ID: maii:blockf72
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'farmer1':
+    ID: elitecreatures:farmer_decoration_v1_beer
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500    
+  'farmer2':
+    ID: elitecreatures:farmer_decoration_v1_corn
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500    
+  'farmer3':
+    ID: elitecreatures:farmer_decoration_v1_corn_basket
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500  
+  'farmer4':
+    ID: elitecreatures:farmer_decoration_v1_door
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500  
+  'farmer5':
+    ID: elitecreatures:farmer_decoration_v1_fence
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500 
+  'farmer6':
+    ID: elitecreatures:farmer_decoration_v1_fence_corner
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500 
+  'farmer7':
+    ID: elitecreatures:farmer_decoration_v1_firewood
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500 
+  'farmer8':
+    ID: elitecreatures:farmer_decoration_v1_flower
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500    
+  'farmer9':
+    ID: elitecreatures:farmer_decoration_v1_hay_with_spade
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500   
+  'farmer10':
+    ID: elitecreatures:farmer_decoration_v1_log_axe
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500  
+  'farmer11':
+    ID: elitecreatures:farmer_decoration_v1_milk_tank
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500      
+  'farmer12':
+    ID: elitecreatures:farmer_decoration_v1_plate_rice
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500 
+  'farmer13':
+    ID: elitecreatures:farmer_decoration_v1_pond
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'farmer14':
+    ID: elitecreatures:farmer_decoration_v1_rice_basket
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500 
+  'farmer15':
+    ID: elitecreatures:farmer_decoration_v1_scare_crow
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500 
+  'farmer16':
+    ID: elitecreatures:farmer_decoration_v1_stone
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500 
+  'farmer17':
+    ID: elitecreatures:farmer_decoration_v1_table
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500 
+  'farmer18':
+    ID: elitecreatures:farmer_decoration_v1_table_sawing
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500 
+  'farmer19':
+    ID: elitecreatures:farmer_decoration_v1_tools_stand
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500        
+  'farmer20':
+    ID: elitecreatures:farmer_decoration_v1_wheelbarrow
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500  
+  'casino1':
+    ID: elitecreatures:casino_decoration_v2_poker_sign
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino2':
+    ID: elitecreatures:casino_decoration_v2_chip_set
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino3':
+    ID: elitecreatures:casino_decoration_v2_gambling_game_machine
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino4':
+    ID: elitecreatures:casino_decoration_v2_doggie_cash
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino5':
+    ID: elitecreatures:casino_decoration_v2_venezia_slot
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino6':
+    ID: elitecreatures:casino_decoration_v2_roulette
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino7':
+    ID: elitecreatures:casino_decoration_v2_chair_red
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino8':
+    ID: elitecreatures:casino_decoration_v2_chair_yellow
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino9':
+    ID: elitecreatures:casino_decoration_v2_red_armrest_chair
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino10':
+    ID: elitecreatures:casino_decoration_v2_yellow_armrest_chair
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino11':
+    ID: elitecreatures:casino_decoration_v2_madonna_gambling_machine
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino12':
+    ID: elitecreatures:casino_decoration_v2_buffalo_slot_machine
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino13':
+    ID: elitecreatures:casino_decoration_v2_woman_painting
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino14':
+    ID: elitecreatures:casino_decoration_v2_baccarat_machine
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino15':
+    ID: elitecreatures:casino_decoration_v2_wheel_machine
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino16':
+    ID: elitecreatures:casino_decoration_v2_lady_led_sign
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino17':
+    ID: elitecreatures:casino_decoration_v2_led_sign
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino18':
+    ID: elitecreatures:casino_decoration_v2_stack_card
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino19':
+    ID: elitecreatures:casino_decoration_v2_ashtray
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'casino20':
+    ID: elitecreatures:casino_decoration_v2_table
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden1':
+    ID: elitecreatures:dirt_bag
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden2':
+    ID: elitecreatures:plant_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden3':
+    ID: elitecreatures:plant_3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden4':
+    ID: elitecreatures:plant_5
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden5':
+    ID: elitecreatures:plant_6
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden6':
+    ID: elitecreatures:plant_7
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden7':
+    ID: elitecreatures:plant_8
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden8':
+    ID: elitecreatures:plant_9
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden9':
+    ID: elitecreatures:plant_10
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden10':
+    ID: elitecreatures:plant_11
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden11':
+    ID: elitecreatures:plant_dead
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden12':
+    ID: elitecreatures:pot_1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden13':
+    ID: elitecreatures:pot_1_c
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden14':
+    ID: elitecreatures:pot_1_d
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden15':
+    ID: elitecreatures:pot_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden16':
+    ID: elitecreatures:pot_2_d
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden17':
+    ID: elitecreatures:pot_3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden18':
+    ID: elitecreatures:table_1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden19':
+    ID: elitecreatures:table_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'garden20':
+    ID: elitecreatures:tool
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital1':
+    ID: elitecreatures:hospital_ambulance_bed
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital2':
+    ID: elitecreatures:hospital_bed
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital3':
+    ID: elitecreatures:hospital_bed_blue_with_single_barrier
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital4':
+    ID: elitecreatures:hospital_bed_with_barrier
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital5':
+    ID: elitecreatures:hospital_bedside_table
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital6':
+    ID: elitecreatures:hospital_chair_block
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital7':
+    ID: elitecreatures:hospital_chair_brown_no_back_rest
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital8':
+    ID: elitecreatures:hospital_chair_white
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital9':
+    ID: elitecreatures:hospital_chair_white_no_back_rest
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital10':
+    ID: elitecreatures:hospital_chair_white_with_back_rest
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital11':
+    ID: elitecreatures:hospital_chair_white_with_back_rest_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital12':
+    ID: elitecreatures:hospital_cupboard
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital13':
+    ID: elitecreatures:hospital_cupboard_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital14':
+    ID: elitecreatures:hospital_cupboard_3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital15':
+    ID: elitecreatures:hospital_cupboard_4
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital16':
+    ID: elitecreatures:hospital_cupboard_5
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital17':
+    ID: elitecreatures:hospital_cupboard_6
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital18':
+    ID: elitecreatures:hospital_curtain
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital19':
+    ID: elitecreatures:hospital_curtain_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital20':
+    ID: elitecreatures:hospital_shelf
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital21':
+    ID: elitecreatures:hospital_shelf_with_handle
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital22':
+    ID: elitecreatures:hospital_sitfix
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital23':
+    ID: elitecreatures:hospital_sofa_single_brown
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital24':
+    ID: elitecreatures:hospital_sofa_single_white
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital25':
+    ID: elitecreatures:hospital_sofa_third_white
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital26':
+    ID: elitecreatures:hospital_stand
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital27':
+    ID: elitecreatures:hospital_trash
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'hospital28':
+    ID: elitecreatures:hospital_wheelchair
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Industrial1':
+    ID: elitecreatures:ik_fridge
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Industrial2':
+    ID: elitecreatures:ik_fridge_white
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Industrial3':
+    ID: elitecreatures:ik_fridge_with_dish
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Industrial4':
+    ID: elitecreatures:ik_grill
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Industrial5':
+    ID: elitecreatures:ik_hood
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Industrial6':
+    ID: elitecreatures:ik_microwave
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Industrial7':
+    ID: elitecreatures:ik_mixer
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Industrial8':
+    ID: elitecreatures:ik_table
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Industrial9':
+    ID: elitecreatures:ik_table_bar
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Industrial10':
+    ID: elitecreatures:ik_table_corner
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Industrial11':
+    ID: elitecreatures:ik_table_fireplace
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Industrial12':
+    ID: elitecreatures:ik_table_long
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Industrial13':
+    ID: elitecreatures:ik_table_with_cupboard
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Industrial14':
+    ID: elitecreatures:ik_table_with_cupboard_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Industrial15':
+    ID: elitecreatures:ik_table_with_dishwasher
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Modern1':
+    ID: elitecreatures:md_bed_blue
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Modern2':
+    ID: elitecreatures:md_bed_carpet
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Modern3':
+    ID: elitecreatures:md_guitar
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Modern4':
+    ID: elitecreatures:md_lamp_left
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Modern5':
+    ID: elitecreatures:md_lamp_right
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Modern6':
+    ID: elitecreatures:md_lamp_short
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Modern7':
+    ID: elitecreatures:md_plantpot
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Modern8':
+    ID: elitecreatures:md_plantpot_short
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Modern9':
+    ID: elitecreatures:md_shelf_3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Modern10':
+    ID: elitecreatures:md_sofa_blue
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Modern11':
+    ID: elitecreatures:md_sofa_blue_small
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Modern12':
+    ID: elitecreatures:md_table_shelf
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Modern13':
+    ID: elitecreatures:md_table_shelf_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Modern14':
+    ID: elitecreatures:md_table_shelf_3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Modern15':
+    ID: elitecreatures:md_table_shelf_half
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Modern16':
+    ID: elitecreatures:md_television
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office1':
+    ID: elitecreatures:office_decoration_v1_bin
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office2':
+    ID: elitecreatures:office_decoration_v1_board
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office3':
+    ID: elitecreatures:office_decoration_v1_chair_1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office4':
+    ID: elitecreatures:office_decoration_v1_chair_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office5':
+    ID: elitecreatures:office_decoration_v1_file_box
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office6':
+    ID: elitecreatures:office_decoration_v1_long_drawer
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office7':
+    ID: elitecreatures:office_decoration_v1_pile_files
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office8':
+    ID: elitecreatures:office_decoration_v1_pile_paper
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office9':
+    ID: elitecreatures:office_decoration_v1_printer
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office10':
+    ID: elitecreatures:office_decoration_v1_printer_small
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office11':
+    ID: elitecreatures:office_decoration_v1_shelf
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office12':
+    ID: elitecreatures:office_decoration_v1_short_tongue
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office13':
+    ID: elitecreatures:office_decoration_v1_sofa_1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office14':
+    ID: elitecreatures:office_decoration_v1_sofa_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office15':
+    ID: elitecreatures:office_decoration_v1_table_1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office16':
+    ID: elitecreatures:office_decoration_v1_table_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office17':
+    ID: elitecreatures:office_decoration_v1_table_3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office18':
+    ID: elitecreatures:office_decoration_v1_tv
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office19':
+    ID: elitecreatures:office_decoration_v1_water_dispenser
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Office20':
+    ID: elitecreatures:office_decoration_v1_white_board
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura1':
+    ID: elitecreatures:sakura_furniture_v2_banner_1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura2':
+    ID: elitecreatures:sakura_furniture_v2_banner_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura3':
+    ID: elitecreatures:sakura_furniture_v2_bed
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura4':
+    ID: elitecreatures:sakura_furniture_v2_bookshelf
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura5':
+    ID: elitecreatures:sakura_furniture_v2_chair
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura6':
+    ID: elitecreatures:sakura_furniture_v2_cinemagraph
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura7':
+    ID: elitecreatures:sakura_furniture_v2_clock
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura8':
+    ID: elitecreatures:sakura_furniture_v2_desk
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura9':
+    ID: elitecreatures:sakura_furniture_v2_dresser
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura10':
+    ID: elitecreatures:sakura_furniture_v2_fishbowl
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura11':
+    ID: elitecreatures:sakura_furniture_v2_lamp
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura12':
+    ID: elitecreatures:sakura_furniture_v2_nightstand
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura13':
+    ID: elitecreatures:sakura_furniture_v2_painting
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura14':
+    ID: elitecreatures:sakura_furniture_v2_petals
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura15':
+    ID: elitecreatures:sakura_furniture_v2_rug
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura16':
+    ID: elitecreatures:sakura_furniture_v2_shelf
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura17':
+    ID: elitecreatures:sakura_furniture_v2_table
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura18':
+    ID: elitecreatures:sakura_furniture_v2_terrarium
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura19':
+    ID: elitecreatures:sakura_furniture_v2_tree
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Sakura20':
+    ID: elitecreatures:sakura_furniture_v2_vase
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy1':
+    ID: elitecreatures:toy_furniture_v1_abc_block
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy2':
+    ID: elitecreatures:toy_furniture_v1_bed_1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy3':
+    ID: elitecreatures:toy_furniture_v1_bed_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy4':
+    ID: elitecreatures:toy_furniture_v1_bed_3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy5':
+    ID: elitecreatures:toy_furniture_v1_bookshelf_1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy6':
+    ID: elitecreatures:toy_furniture_v1_bookshelf_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy7':
+    ID: elitecreatures:toy_furniture_v1_bookshelf_3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy8':
+    ID: elitecreatures:toy_furniture_v1_chair_1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy9':
+    ID: elitecreatures:toy_furniture_v1_chair_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy10':
+    ID: elitecreatures:toy_furniture_v1_chair_3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy11':
+    ID: elitecreatures:toy_furniture_v1_doll_house_1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy12':
+    ID: elitecreatures:toy_furniture_v1_doll_house_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy13':
+    ID: elitecreatures:toy_furniture_v1_doll_house_3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy14':
+    ID: elitecreatures:toy_furniture_v1_rabbit_doll
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy15':
+    ID: elitecreatures:toy_furniture_v1_rug
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy16':
+    ID: elitecreatures:toy_furniture_v1_student_backpack
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy17':
+    ID: elitecreatures:toy_furniture_v1_table_1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy18':
+    ID: elitecreatures:toy_furniture_v1_table_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy19':
+    ID: elitecreatures:toy_furniture_v1_table_3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Toy20':
+    ID: elitecreatures:toy_furniture_v1_teddy_bear
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater1':
+    ID: elitecreatures:anchor
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater2':
+    ID: elitecreatures:brain_coral
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater3':
+    ID: elitecreatures:clam
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater4':
+    ID: elitecreatures:coral_1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater5':
+    ID: elitecreatures:coral_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater6':
+    ID: elitecreatures:coral_3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater7':
+    ID: elitecreatures:coral_4
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater8':
+    ID: elitecreatures:coral_5
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater9':
+    ID: elitecreatures:coral_6
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater10':
+    ID: elitecreatures:coral_tube
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater11':
+    ID: elitecreatures:giant_coral_tube
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater12':
+    ID: elitecreatures:living_remains_1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater13':
+    ID: elitecreatures:living_remains_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater14':
+    ID: elitecreatures:marine_kelp_1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater15':
+    ID: elitecreatures:marine_kelp_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater16':
+    ID: elitecreatures:marine_kelp_3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater17':
+    ID: elitecreatures:pearl_clam
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater18':
+    ID: elitecreatures:rubble_1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater19':
+    ID: elitecreatures:rubble_2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'Underwater20':
+    ID: elitecreatures:rubble_3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'blacksmith1':
+    ID: elitecreature:blacksmith_weaponshelf
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'blacksmith2':
+    ID: elitecreature:blacksmith_anvil
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'blacksmith3':
+    ID: elitecreature:blacksmith_bed
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'blacksmith4':
+    ID: elitecreature:blacksmith_carpet
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'blacksmith5':
+    ID: elitecreature:blacksmith_chair_double
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'blacksmith6':
+    ID: elitecreature:blacksmith_chair_single
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'blacksmith7':
+    ID: elitecreature:blacksmith_cupboard
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'blacksmith8':
+    ID: elitecreature:blacksmith_flag_red_white
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'blacksmith9':
+    ID: elitecreature:blacksmith_flag_red_white_hang
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'blacksmith10':
+    ID: elitecreature:blacksmith_furnace
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'blacksmith11':
+    ID: elitecreature:blacksmith_grindstone
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'blacksmith12':
+    ID: elitecreature:blacksmith_shopsign
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'blacksmith13':
+    ID: elitecreature:blacksmith_table_big
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'blacksmith14':
+    ID: elitecreature:blacksmith_table_mini
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'blacksmith15':
+    ID: elitecreature:blacksmith_toolrack
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'nightclub1':
+    ID: elitecreatures:nightclub_bar_01
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'nightclub2':
+    ID: elitecreatures:nightclub_bar_02
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'nightclub3':
+    ID: elitecreatures:nightclub_bar_03
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'nightclub4':
+    ID: elitecreatures:nightclub_chair_3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'nightclub5':
+    ID: elitecreatures:nightclub_bar_chair_red
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'nightclub6':
+    ID: elitecreatures:nightclub_bar_cooler
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'nightclub7':
+    ID: elitecreatures:nightclub_bar_shelf
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'nightclub8':
+    ID: elitecreatures:nightclub_chair_brown
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'nightclub9':
+    ID: elitecreatures:nightclub_dance_floor
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'nightclub10':
+    ID: elitecreatures:nightclub_dj_set
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'nightclub11':
+    ID: elitecreatures:nightclub_ice_bucket
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'nightclub12':
+    ID: elitecreatures:nightclub_led_sing
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'nightclub13':
+    ID: elitecreatures:nightclub_sofa
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'nightclub14':
+    ID: elitecreatures:nightclub_sofa_corner
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'nightclub15':
+    ID: elitecreatures:nightclub_sofa_long
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'nightclub16':
+    ID: elitecreatures:nightclub_table
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  'nightclub17':
+    ID: elitecreatures:nightclub_table_long
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '399':
+    ID: nuengkub:1
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '400':
+    ID: nuengkub:2
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '401':
+    ID: nuengkub:3
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '402':
+    ID: nuengkub:4
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '403':
+    ID: nuengkub:5
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '404':
+    ID: nuengkub:6
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '405':
+    ID: nuengkub:7
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '406':
+    ID: nuengkub:8
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '407':
+    ID: nuengkub:9
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '408':
+    ID: nuengkub:10
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '409':
+    ID: nuengkub:11
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '410':
+    ID: nuengkub:12
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '411':
+    ID: nuengkub:13
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '412':
+    ID: nuengkub:14
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '413':
+    ID: nuengkub:15
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '414':
+    ID: nuengkub:16
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '415':
+    ID: nuengkub:17
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '416':
+    ID: nuengkub:18
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '417':
+    ID: nuengkub:19
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '418':
+    ID: nuengkub:20
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '419':
+    ID: nuengkub:21
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '420':
+    ID: nuengkub:22
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '421':
+    ID: nuengkub:23
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '422':
+    ID: nuengkub:24
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '423':
+    ID: nuengkub:25
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '424':
+    ID: nuengkub:26
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '425':
+    ID: nuengkub:27
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '426':
+    ID: nuengkub:28
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '427':
+    ID: nuengkub:29
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '428':
+    ID: nuengkub:30
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '429':
+    ID: nuengkub:31
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '430':
+    ID: nuengkub:32
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '431':
+    ID: nuengkub:33
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '432':
+    ID: nuengkub:34
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '433':
+    ID: nuengkub:35
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '434':
+    ID: nuengkub:36
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '435':
+    ID: nuengkub:37
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '436':
+    ID: nuengkub:38
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '437':
+    ID: nuengkub:39
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '438':
+    ID: nuengkub:40
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '439':
+    ID: nuengkub:41
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '440':
+    ID: nuengkub:42
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '441':
+    ID: nuengkub:43
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '442':
+    ID: nuengkub:44
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '443':
+    ID: nuengkub:45
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '444':
+    ID: nuengkub:46
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '445':
+    ID: nuengkub:47
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '446':
+    ID: nuengkub:48
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '447':
+    ID: nuengkub:49
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '448':
+    ID: nuengkub:50
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '449':
+    ID: nuengkub:51
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '450':
+    ID: nuengkub:52
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '451':
+    ID: nuengkub:53
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '452':
+    ID: nuengkub:54
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '453':
+    ID: nuengkub:55
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '454':
+    ID: nuengkub:56
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '455':
+    ID: nuengkub:57
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '456':
+    ID: nuengkub:58
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '457':
+    ID: nuengkub:59
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '458':
+    ID: nuengkub:60
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '459':
+    ID: nuengkub:61
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '460':
+    ID: nuengkub:62
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '461':
+    ID: nuengkub:63
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '462':
+    ID: nuengkub:64
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '463':
+    ID: nuengkub:65
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '464':
+    ID: nuengkub:66
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '465':
+    ID: nuengkub:67
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '466':
+    ID: nuengkub:68
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '467':
+    ID: nuengkub:69
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '468':
+    ID: nuengkub:70
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '469':
+    ID: nuengkub:71
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '470':
+    ID: nuengkub:72
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '471':
+    ID: nuengkub:73
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '472':
+    ID: nuengkub:74
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '473':
+    ID: nuengkub:75
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '474':
+    ID: nuengkub:76
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '475':
+    ID: nuengkub:77
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '476':
+    ID: nuengkub:78
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '477':
+    ID: nuengkub:79
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '478':
+    ID: nuengkub:80
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '479':
+    ID: nuengkub:81
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '480':
+    ID: nuengkub:82
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '481':
+    ID: nuengkub:83
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '482':
+    ID: nuengkub:84
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '483':
+    ID: nuengkub:85
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '484':
+    ID: nuengkub:86
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '485':
+    ID: nuengkub:87
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '486':
+    ID: nuengkub:88
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '487':
+    ID: nuengkub:89
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '488':
+    ID: nuengkub:90
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '489':
+    ID: nuengkub:91
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '490':
+    ID: nuengkub:92
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '491':
+    ID: nuengkub:93
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '492':
+    ID: nuengkub:94
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '493':
+    ID: nuengkub:95
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '494':
+    ID: nuengkub:96
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '495':
+    ID: nuengkub:97
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '496':
+    ID: nuengkub:98
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '497':
+    ID: nuengkub:99
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '498':
+    ID: nuengkub:100
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '499':
+    ID: nuengkub:101
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '500':
+    ID: nuengkub:102
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '501':
+    ID: nuengkub:103
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '502':
+    ID: nuengkub:104
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '503':
+    ID: nuengkub:105
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '504':
+    ID: nuengkub:106
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '505':
+    ID: nuengkub:107
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '506':
+    ID: nuengkub:108
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '507':
+    ID: nuengkub:109
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '508':
+    ID: nuengkub:110
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '509':
+    ID: nuengkub:111
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '510':
+    ID: nuengkub:112
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '511':
+    ID: nuengkub:113
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '512':
+    ID: nuengkub:114
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '513':
+    ID: nuengkub:115
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '514':
+    ID: nuengkub:116
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '515':
+    ID: nuengkub:117
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '516':
+    ID: nuengkub:118
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '517':
+    ID: nuengkub:119
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '518':
+    ID: nuengkub:120
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '519':
+    ID: nuengkub:121
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '520':
+    ID: nuengkub:122
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '521':
+    ID: nuengkub:123
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '522':
+    ID: nuengkub:124
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '523':
+    ID: nuengkub:125
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '524':
+    ID: nuengkub:126
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '525':
+    ID: nuengkub:127
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '526':
+    ID: nuengkub:128
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '527':
+    ID: nuengkub:129
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '528':
+    ID: nuengkub:130
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '529':
+    ID: nuengkub:131
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '530':
+    ID: nuengkub:132
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '531':
+    ID: nuengkub:133
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '532':
+    ID: nuengkub:134
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '533':
+    ID: nuengkub:135
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '534':
+    ID: nuengkub:136
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '535':
+    ID: nuengkub:137
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '536':
+    ID: nuengkub:138
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '537':
+    ID: nuengkub:139
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '538':
+    ID: nuengkub:140
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '539':
+    ID: nuengkub:141
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '540':
+    ID: nuengkub:142
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '541':
+    ID: nuengkub:143
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '542':
+    ID: nuengkub:144
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '543':
+    ID: nuengkub:145
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '544':
+    ID: nuengkub:146
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '545':
+    ID: nuengkub:147
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '546':
+    ID: nuengkub:148
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '547':
+    ID: nuengkub:149
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '548':
+    ID: nuengkub:150
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '549':
+    ID: nuengkub:151
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '550':
+    ID: nuengkub:152
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '551':
+    ID: nuengkub:153
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '552':
+    ID: nuengkub:154
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '553':
+    ID: nuengkub:155
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '554':
+    ID: nuengkub:156
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '555':
+    ID: nuengkub:157
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '556':
+    ID: nuengkub:158
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '557':
+    ID: nuengkub:159
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '558':
+    ID: nuengkub:160
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '559':
+    ID: nuengkub:161
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '560':
+    ID: nuengkub:162
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '561':
+    ID: nuengkub:163
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '562':
+    ID: nuengkub:164
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '563':
+    ID: nuengkub:165
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '564':
+    ID: nuengkub:166
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '565':
+    ID: nuengkub:167
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '566':
+    ID: nuengkub:168
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '567':
+    ID: nuengkub:169
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '568':
+    ID: nuengkub:170
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '569':
+    ID: nuengkub:171
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '570':
+    ID: nuengkub:172
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '571':
+    ID: nuengkub:173
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '572':
+    ID: nuengkub:174
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '573':
+    ID: nuengkub:175
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '574':
+    ID: nuengkub:176
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '575':
+    ID: nuengkub:177
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '576':
+    ID: nuengkub:178
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '577':
+    ID: nuengkub:179
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '578':
+    ID: nuengkub:180
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '579':
+    ID: nuengkub:181
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '580':
+    ID: nuengkub:182
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '581':
+    ID: nuengkub:183
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '582':
+    ID: nuengkub:184
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '583':
+    ID: nuengkub:185
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '584':
+    ID: nuengkub:186
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '585':
+    ID: nuengkub:187
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '586':
+    ID: nuengkub:188
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '587':
+    ID: nuengkub:189
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '588':
+    ID: nuengkub:190
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '589':
+    ID: nuengkub:191
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '590':
+    ID: nuengkub:192
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '591':
+    ID: nuengkub:193
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '592':
+    ID: nuengkub:194
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '593':
+    ID: nuengkub:195
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '594':
+    ID: nuengkub:196
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '595':
+    ID: nuengkub:197
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '596':
+    ID: nuengkub:198
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '597':
+    ID: nuengkub:199
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '598':
+    ID: nuengkub:200
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '599':
+    ID: nuengkub:201
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '600':
+    ID: nuengkub:202
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '601':
+    ID: nuengkub:203
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '602':
+    ID: nuengkub:204
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '603':
+    ID: nuengkub:205
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '604':
+    ID: nuengkub:206
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '605':
+    ID: nuengkub:206
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '606':
+    ID: nuengkub:208
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '607':
+    ID: nuengkub:209
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '608':
+    ID: nuengkub:210
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '609':
+    ID: nuengkub:211
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '610':
+    ID: nuengkub:212
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '611':
+    ID: nuengkub:213
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '612':
+    ID: nuengkub:214
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '613':
+    ID: nuengkub:215
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '614':
+    ID: nuengkub:216
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '615':
+    ID: nuengkub:217
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '616':
+    ID: nuengkub:218
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '617':
+    ID: nuengkub:219
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '618':
+    ID: nuengkub:220
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '619':
+    ID: nuengkub:221
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '620':
+    ID: nuengkub:222
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '621':
+    ID: nuengkub:223
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '622':
+    ID: nuengkub:224
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '623':
+    ID: nuengkub:225
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '624':
+    ID: nuengkub:226
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '625':
+    ID: nuengkub:227
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '626':
+    ID: nuengkub:228
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '627':
+    ID: nuengkub:229
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '628':
+    ID: nuengkub:230
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '629':
+    ID: nuengkub:231
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '630':
+    ID: nuengkub:232
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '631':
+    ID: nuengkub:234
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '632':
+    ID: nuengkub:235
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '633':
+    ID: nuengkub:236
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '634':
+    ID: nuengkub:237
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '635':
+    ID: nuengkub:238
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '636':
+    ID: nuengkub:239
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '637':
+    ID: nuengkub:240
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '638':
+    ID: nuengkub:241
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '639':
+    ID: nuengkub:242
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '640':
+    ID: nuengkub:243
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '641':
+    ID: nuengkub:244
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '642':
+    ID: nuengkub:245
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '643':
+    ID: nuengkub:246
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '644':
+    ID: nuengkub:247
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '645':
+    ID: nuengkub:248
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '646':
+    ID: nuengkub:249
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '647':
+    ID: nuengkub:250
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '648':
+    ID: nuengkub:251
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '649':
+    ID: nuengkub:252
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '650':
+    ID: nuengkub:253
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '651':
+    ID: nuengkub:254
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '652':
+    ID: nuengkub:255
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '653':
+    ID: nuengkub:256
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '654':
+    ID: nuengkub:257
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '655':
+    ID: nuengkub:258
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '656':
+    ID: nuengkub:259
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '657':
+    ID: nuengkub:260
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '658':
+    ID: nuengkub:261
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '659':
+    ID: nuengkub:262
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '660':
+    ID: nuengkub:263
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '661':
+    ID: nuengkub:264
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '662':
+    ID: nuengkub:265
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '663':
+    ID: nuengkub:266
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '664':
+    ID: nuengkub:267
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '665':
+    ID: nuengkub:268
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '666':
+    ID: nuengkub:269
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '667':
+    ID: nuengkub:270
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '668':
+    ID: nuengkub:271
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '669':
+    ID: nuengkub:272
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '670':
+    ID: nuengkub:273
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '671':
+    ID: nuengkub:274
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '672':
+    ID: nuengkub:275
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '673':
+    ID: nuengkub:276
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '674':
+    ID: nuengkub:277
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '675':
+    ID: nuengkub:278
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '676':
+    ID: nuengkub:279
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '677':
+    ID: nuengkub:280
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '678':
+    ID: nuengkub:281
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '679':
+    ID: nuengkub:282
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '680':
+    ID: nuengkub:283
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '681':
+    ID: nuengkub:284
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '682':
+    ID: nuengkub:285
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '683':
+    ID: nuengkub:286
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '684':
+    ID: nuengkub:287
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '685':
+    ID: nuengkub:288
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '686':
+    ID: nuengkub:289
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '687':
+    ID: nuengkub:290
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '688':
+    ID: nuengkub:291
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '689':
+    ID: nuengkub:292
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '690':
+    ID: nuengkub:293
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '691':
+    ID: nuengkub:294
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '692':
+    ID: nuengkub:295
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '693':
+    ID: nuengkub:296
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '694':
+    ID: nuengkub:297
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '695':
+    ID: nuengkub:298
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '696':
+    ID: nuengkub:299
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '697':
+    ID: nuengkub:300
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '698':
+    ID: nuengkub:301
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '699':
+    ID: nuengkub:302
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '700':
+    ID: nuengkub:303
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '701':
+    ID: nuengkub:304
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '702':
+    ID: nuengkub:305
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '703':
+    ID: nuengkub:306
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '704':
+    ID: nuengkub:307
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '705':
+    ID: nuengkub:308
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '706':
+    ID: nuengkub:309
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '707':
+    ID: nuengkub:310
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '708':
+    ID: nuengkub:311
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '709':
+    ID: nuengkub:312
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '710':
+    ID: nuengkub:313
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '711':
+    ID: nuengkub:314
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '712':
+    ID: nuengkub:315
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '713':
+    ID: nuengkub:316
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '714':
+    ID: nuengkub:317
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '715':
+    ID: nuengkub:318
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '716':
+    ID: nuengkub:319
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '717':
+    ID: nuengkub:320
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '718':
+    ID: nuengkub:321
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '719':
+    ID: nuengkub:322
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '720':
+    ID: nuengkub:323
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '721':
+    ID: nuengkub:324
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '722':
+    ID: nuengkub:325
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '723':
+    ID: nuengkub:326
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '724':
+    ID: nuengkub:327
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '725':
+    ID: nuengkub:328
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '726':
+    ID: nuengkub:329
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '727':
+    ID: nuengkub:330
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '728':
+    ID: nuengkub:331
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '729':
+    ID: nuengkub:332
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '730':
+    ID: nuengkub:333
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '731':
+    ID: nuengkub:334
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '732':
+    ID: nuengkub:335
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '733':
+    ID: nuengkub:336
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '734':
+    ID: nuengkub:337
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '735':
+    ID: nuengkub:338
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '736':
+    ID: nuengkub:339
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '737':
+    ID: nuengkub:340
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '738':
+    ID: nuengkub:341
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '739':
+    ID: nuengkub:342
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '740':
+    ID: nuengkub:343
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '741':
+    ID: nuengkub:344
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '742':
+    ID: nuengkub:345
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '743':
+    ID: nuengkub:346
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '744':
+    ID: nuengkub:347
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '745':
+    ID: nuengkub:348
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '746':
+    ID: nuengkub:349
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '747':
+    ID: nuengkub:350
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '748':
+    ID: nuengkub:351
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '749':
+    ID: nuengkub:352
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '750':
+    ID: nuengkub:353
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '751':
+    ID: nuengkub:354
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '752':
+    ID: nuengkub:355
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '753':
+    ID: nuengkub:356
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '754':
+    ID: nuengkub:357
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '755':
+    ID: nuengkub:358
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '756':
+    ID: nuengkub:359
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '757':
+    ID: nuengkub:360
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '758':
+    ID: nuengkub:361
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '759':
+    ID: nuengkub:362
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '760':
+    ID: nuengkub:363
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '761':
+    ID: nuengkub:364
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '762':
+    ID: nuengkub:365
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '763':
+    ID: nuengkub:366
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '764':
+    ID: nuengkub:367
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '765':
+    ID: nuengkub:368
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '766':
+    ID: nuengkub:369
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '767':
+    ID: nuengkub:370
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '768':
+    ID: nuengkub:371
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '769':
+    ID: nuengkub:372
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '770':
+    ID: nuengkub:373
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '771':
+    ID: nuengkub:374
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '772':
+    ID: nuengkub:375
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '773':
+    ID: nuengkub:376
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '774':
+    ID: nuengkub:377
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '775':
+    ID: nuengkub:378
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '776':
+    ID: nuengkub:379
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '777':
+    ID: nuengkub:380
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '778':
+    ID: nuengkub:381
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '779':
+    ID: nuengkub:382
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '780':
+    ID: nuengkub:383
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '781':
+    ID: nuengkub:384
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '782':
+    ID: nuengkub:385
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '783':
+    ID: nuengkub:386
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '784':
+    ID: nuengkub:387
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '785':
+    ID: nuengkub:388
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '786':
+    ID: nuengkub:389
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '787':
+    ID: nuengkub:390
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '788':
+    ID: nuengkub:391
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '789':
+    ID: nuengkub:392
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '790':
+    ID: nuengkub:393
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '791':
+    ID: nuengkub:394
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '792':
+    ID: nuengkub:395
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '793':
+    ID: nuengkub:396
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '794':
+    ID: nuengkub:397
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '795':
+    ID: nuengkub:398
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '796':
+    ID: nuengkub:399
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '797':
+    ID: nuengkub:400
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '798':
+    ID: nuengkub:401
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '799':
+    ID: nuengkub:402
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '800':
+    ID: nuengkub:403
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '801':
+    ID: nuengkub:404
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '802':
+    ID: nuengkub:405
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '803':
+    ID: nuengkub:406
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '804':
+    ID: nuengkub:407
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '805':
+    ID: nuengkub:408
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '806':
+    ID: nuengkub:409
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '807':
+    ID: nuengkub:410
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '808':
+    ID: nuengkub:411
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '809':
+    ID: nuengkub:412
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '810':
+    ID: nuengkub:413
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '811':
+    ID: nuengkub:414
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '812':
+    ID: nuengkub:415
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '813':
+    ID: nuengkub:416
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '814':
+    ID: nuengkub:417
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '815':
+    ID: nuengkub:418
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '816':
+    ID: nuengkub:419
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '817':
+    ID: nuengkub:420
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '818':
+    ID: nuengkub:421
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '819':
+    ID: nuengkub:422
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '820':
+    ID: nuengkub:423
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '821':
+    ID: nuengkub:424
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '822':
+    ID: nuengkub:425
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '823':
+    ID: nuengkub:426
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '824':
+    ID: nuengkub:427
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '825':
+    ID: nuengkub:428
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '826':
+    ID: nuengkub:429
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '827':
+    ID: nuengkub:430
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '828':
+    ID: nuengkub:431
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '829':
+    ID: nuengkub:432
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '830':
+    ID: nuengkub:433
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '831':
+    ID: nuengkub:434
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '832':
+    ID: nuengkub:435
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '833':
+    ID: nuengkub:436
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '834':
+    ID: nuengkub:437
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '835':
+    ID: nuengkub:438
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '836':
+    ID: nuengkub:439
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '837':
+    ID: nuengkub:440
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '838':
+    ID: nuengkub:441
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '839':
+    ID: nuengkub:442
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '840':
+    ID: nuengkub:443
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '841':
+    ID: nuengkub:444
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '842':
+    ID: nuengkub:445
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '843':
+    ID: nuengkub:446
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '844':
+    ID: nuengkub:447
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '845':
+    ID: nuengkub:448
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '846':
+    ID: nuengkub:449
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '847':
+    ID: nuengkub:450
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '848':
+    ID: nuengkub:451
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '849':
+    ID: nuengkub:452
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '850':
+    ID: nuengkub:453
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '851':
+    ID: nuengkub:454
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '852':
+    ID: nuengkub:455
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '853':
+    ID: nuengkub:456
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '854':
+    ID: nuengkub:457
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '855':
+    ID: nuengkub:458
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '856':
+    ID: nuengkub:459
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '857':
+    ID: nuengkub:460
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '858':
+    ID: nuengkub:461
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '859':
+    ID: nuengkub:462
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '860':
+    ID: nuengkub:463
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '861':
+    ID: nuengkub:464
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '862':
+    ID: nuengkub:465
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '863':
+    ID: nuengkub:466
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '864':
+    ID: nuengkub:467
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '865':
+    ID: nuengkub:468
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '867':
+    ID: nuengkub:469
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '868':
+    ID: nuengkub:470
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '869':
+    ID: nuengkub:471
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '870':
+    ID: nuengkub:472
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '871':
+    ID: nuengkub:473
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '872':
+    ID: nuengkub:474
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
+  '873':
+    ID: nuengkub:475
+    Currency: Vault
+    PlayerPoints: 10
+    Vault: 3500
