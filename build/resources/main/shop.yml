@@ -1,7 +1,0 @@
-Items:
-  - develop:example:
-      currency: vault
-      price: 1000
-  - develop:example2:
-      currency: vault
-      price: 2000
