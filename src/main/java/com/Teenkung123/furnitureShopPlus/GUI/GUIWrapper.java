@@ -30,6 +30,14 @@ public class GUIWrapper implements Listener {
         confirmInventories.put(record.inventory(), record);
     }
 
+    public void setPluginInventory(Inventory inventory, ShopGUIRecord record) {
+        shopInventories.put(inventory, record);
+    }
+
+    public void setPluginInventory(Inventory inventory, ConfirmRecord record) {
+        confirmInventories.put(inventory, record);
+    }
+
     /**
      * Removes the inventory from tracking maps and closes it programmatically.
      * Uses a flag to prevent recursive event triggering.

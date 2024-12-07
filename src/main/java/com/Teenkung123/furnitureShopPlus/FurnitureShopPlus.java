@@ -88,14 +88,11 @@ public final class FurnitureShopPlus extends JavaPlugin {
         configLoader.loadConfig();
         messageLoader.loadMessages();
         previewTimer.start();
+
+        messageLoader.reloadMessages();
     }
 
     private void setupEconomy() {
-        if (getServer().getPluginManager().getPlugin("Vault") == null) {
-            getLogger().warning("Vault not found, Disabling Plugin.");
-            getServer().getPluginManager().disablePlugin(this);
-            return;
-        }
         RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
         if (rsp == null) {
             getLogger().warning("Economy provider not found, Disabling Plugin.");

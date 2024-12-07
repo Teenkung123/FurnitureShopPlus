@@ -352,7 +352,7 @@ public class ConfigLoader {
     }
 
     public boolean isInvalidItem(String name) {
-        return invalidItems.contains(name);
+        return !invalidItems.contains(name);
     }
 
     // Displaying related Getters

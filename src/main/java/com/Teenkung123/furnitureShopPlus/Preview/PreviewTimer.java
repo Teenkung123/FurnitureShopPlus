@@ -2,11 +2,11 @@ package com.Teenkung123.furnitureShopPlus.Preview;
 
 import com.Teenkung123.furnitureShopPlus.FurnitureShopPlus;
 import dev.lone.itemsadder.api.CustomFurniture;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.scheduler.BukkitTask;
 
-import javax.annotation.Nullable;
 import java.util.Random;
 
 public class PreviewTimer {
@@ -46,21 +46,44 @@ public class PreviewTimer {
             int randomIndex = random.nextInt(plugin.getConfigLoader().getShopItemsList().size());
             namespace = plugin.getConfigLoader().getShopItemsList().get(randomIndex).namespace();
             int idx = 0;
-            while (!plugin.getConfigLoader().isInvalidItem(namespace) && idx < 20) {
+            while (plugin.getConfigLoader().isInvalidItem(namespace) && idx < 20) {
                 randomIndex = random.nextInt(plugin.getConfigLoader().getShopItemsList().size());
                 namespace = plugin.getConfigLoader().getShopItemsList().get(randomIndex).namespace();
                 idx++;
             }
         }
-        if (!plugin.getConfigLoader().isInvalidItem(namespace)) {
+        if (plugin.getConfigLoader().isInvalidItem(namespace)) {
             return;
         }
         if (furniture == null) {
-            furniture = CustomFurniture.spawnPreciseNonSolid(namespace, displayLocation.getBlock().getLocation().add(0.5, 0, 0.5));
+            try {
+                furniture = CustomFurniture.spawnPreciseNonSolid(namespace, displayLocation.getBlock().getLocation().add(0.5, 0, 0.5));
+            } catch (RuntimeException ignored) {
+                return;
+            }
             return;
         }
         furniture.remove(false);
-        furniture = CustomFurniture.spawnPreciseNonSolid(namespace, displayLocation.getBlock().getLocation().add(0.5, 0, 0.5));
+
+        tryRemoveArmorStandAndFrames();
+
+        try {
+            furniture = CustomFurniture.spawnPreciseNonSolid(namespace, displayLocation.getBlock().getLocation().add(0.5, 0, 0.5));
+        } catch (RuntimeException ignored) {
+            return;
+        }
+    }
+
+    private void tryRemoveArmorStandAndFrames() {
+        for (Entity entity : plugin.getConfigLoader().getDisplayLocation().getNearbyEntities(0.5, 0.5, 0.5)) {
+            if (entity.getType() == EntityType.ARMOR_STAND) {
+                entity.remove();
+            }
+
+            if (entity.getType() == EntityType.ITEM_FRAME) {
+                entity.remove();
+            }
+        }
     }
 
     public void removeFurniture() {

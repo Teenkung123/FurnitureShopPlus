@@ -11,7 +11,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
-import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -37,11 +36,15 @@ public class ShopGUIHandler implements Listener {
             if (configLoader.getNextPage().contains(event.getSlot())) {
                 // Next Page Logic
                 if (Math.floor((double) configLoader.getShopItemsList().size() / configLoader.getShopArea().size()) == record.page() + 1) return;
-                plugin.getShopGUI().openGUI(player, (int) Math.min(record.page() + 1, Math.floor((double) configLoader.getShopItemsList().size() / configLoader.getShopArea().size())));
+                int page = Math.min(record.page() + 1, (int) Math.floor((double) configLoader.getShopItemsList().size() / configLoader.getShopArea().size()));
+                plugin.getGuiWrapper().setPluginInventory(clickedInventory, new ShopGUIRecord(record.inventory(), page));
+                plugin.getShopGUI().putItems(clickedInventory, page);
             } else if (configLoader.getPrevPage().contains(event.getSlot())) {
                 // Prev Page Login
                 if (record.page() == 0) return;
-                plugin.getShopGUI().openGUI(player, Math.max(0, record.page() - 1));
+                int page = Math.max(0 , record.page() - 1);
+                plugin.getGuiWrapper().setPluginInventory(clickedInventory, new ShopGUIRecord(record.inventory(), page));
+                plugin.getShopGUI().putItems(clickedInventory, page);
             } else if (configLoader.getShopArea().contains(event.getSlot())) {
                 // Shop Item Logic
                 int itemIdx = record.page() * configLoader.getShopArea().size() + configLoader.getShopArea().indexOf(event.getSlot());
@@ -50,7 +53,7 @@ public class ShopGUIHandler implements Listener {
                 CustomStack customStack = CustomStack.getInstance(shopItem.namespace());
                 if (customStack == null) return;
                 ItemStack itemStack = customStack.getItemStack();
-                if (!configLoader.isInvalidItem(shopItem.namespace())) {
+                if (configLoader.isInvalidItem(shopItem.namespace())) {
                     player.sendMessage(Colorizer.colorize(plugin.getMessageLoader().getMessage("InvalidItem")));
                     return;
                 }

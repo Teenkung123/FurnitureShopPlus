@@ -4,7 +4,7 @@ main: com.Teenkung123.furnitureShopPlus.FurnitureShopPlus
 api-version: '1.21'
 prefix: PluginManager
 authors: [ Teenkung123 ]
-depend: [ ItemsAdder, Vault, NBTAPI ]
+depend: [ ItemsAdder, Vault, NBTAPI, WorldGuard ]
 softdepend:
   - PlayerPoints
 commands:

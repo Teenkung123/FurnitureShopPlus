@@ -36,7 +36,7 @@ public class ShopGUI {
 
     public Inventory buildInventory(int page) {
         ConfigLoader configLoader = plugin.getConfigLoader();
-        Inventory inventory = Bukkit.createInventory(null, configLoader.getShopGUILayoutPattern().size() * 9, MiniMessage.miniMessage().deserialize(configLoader.getShopGUIName(), Placeholder.unparsed("page", String.valueOf(page + 1))));
+        Inventory inventory = Bukkit.createInventory(null, configLoader.getShopGUILayoutPattern().size() * 9, MiniMessage.miniMessage().deserialize(configLoader.getShopGUIName()));
         Map<String, ItemBuilder> layoutBuilder = configLoader.getShopGUILayoutBuilder();
         int idx = 0;
         for (String layout : configLoader.getShopGUILayoutPattern()) {
