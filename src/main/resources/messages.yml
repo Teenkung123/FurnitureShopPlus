@@ -1,4 +1,4 @@
-Success: "<green>Successfully bought x1 <item> for <price>!"
+Success: "<green>Successfully bought <amount>x <item> for <price>!"
 Preview: "<green>Displaying preview of <item>!"
 NotEnoughMoney: "<red>You don't have enough money to buy this item!"
 NoPermission: "<red>You don't have permission to do this!"

@@ -31,13 +31,34 @@ public class ConfirmGUIHandler implements Listener {
             if (record == null) return;
 
             Player player = (Player) event.getWhoClicked();
-            CustomStack stack = CustomStack.getInstance(record.shopItem().namespace());
-            if (stack == null) returnToShop(player, record.shopItem());
+            CustomStack stack = CustomStack.getInstance(record.getShopItem().namespace());
+            if (stack == null) {
+                returnToShop(player, record.getShopItem());
+                return;
+            }
 
-            if (plugin.getConfigLoader().getAcceptSlots().contains(event.getSlot())) {
-                buyItem(player, record.shopItem(), stack.getItemStack());
+            if (plugin.getConfigLoader().getAdd1Slots().contains(event.getSlot())) {
+                updateAmount(record, stack, 1);
+            } else if (plugin.getConfigLoader().getAdd8Slots().contains(event.getSlot())) {
+                updateAmount(record, stack, 8);
+            } else if (plugin.getConfigLoader().getAdd16Slots().contains(event.getSlot())) {
+                updateAmount(record, stack, 16);
+            } else if (plugin.getConfigLoader().getRemove1Slots().contains(event.getSlot())) {
+                updateAmount(record, stack, -1);
+            } else if (plugin.getConfigLoader().getRemove8Slots().contains(event.getSlot())) {
+                updateAmount(record, stack, -8);
+            } else if (plugin.getConfigLoader().getRemove16Slots().contains(event.getSlot())) {
+                updateAmount(record, stack, -16);
+            } else if (plugin.getConfigLoader().getSet1Slots().contains(event.getSlot())) {
+                record.setAmount(1);
+                refreshPreview(record, stack);
+            } else if (plugin.getConfigLoader().getSet64Slots().contains(event.getSlot())) {
+                record.setAmount(64);
+                refreshPreview(record, stack);
+            } else if (plugin.getConfigLoader().getAcceptSlots().contains(event.getSlot())) {
+                buyItem(player, record.getShopItem(), stack.getItemStack(), record.getAmount());
             } else if (plugin.getConfigLoader().getDenySlots().contains(event.getSlot())) {
-                returnToShop(player, record.shopItem());
+                returnToShop(player, record.getShopItem());
             }
         }
     }
@@ -48,8 +69,8 @@ public class ConfirmGUIHandler implements Listener {
         plugin.getShopGUI().openGUI(player, page);
     }
 
-    private void buyItem(Player player, ShopItem shopItem, ItemStack stack) {
-        double price = shopItem.price();
+    private void buyItem(Player player, ShopItem shopItem, ItemStack stack, int amount) {
+        double price = shopItem.price() * amount;
         if (shopItem.currency().equalsIgnoreCase("Vault")) {
             //Vault Econoy
             Economy economy = plugin.getEconomy();
@@ -58,12 +79,14 @@ public class ConfirmGUIHandler implements Listener {
                 return;
             }
             economy.withdrawPlayer(player, price);
+            stack.setAmount(amount);
             player.getInventory().addItem(stack);
             player.sendMessage(MiniMessage.miniMessage().deserialize(
                     plugin.getMessageLoader().getMessage("Success"),
                     Placeholder.unparsed("price", String.valueOf(price)),
                     Placeholder.unparsed("symbol", plugin.getMessageLoader().getMessage("VaultCurrencySymbol")),
-                    Placeholder.component("item", stack.displayName())
+                    Placeholder.component("item", stack.displayName()),
+                    Placeholder.unparsed("amount", String.valueOf(amount))
             ));
             player.closeInventory();
         } else if (plugin.getPlayerPointsAPI() != null){
@@ -73,12 +96,14 @@ public class ConfirmGUIHandler implements Listener {
                 return;
             }
             ppAPI.take(player.getUniqueId(), (int) price);
+            stack.setAmount(amount);
             player.getInventory().addItem(stack);
             player.sendMessage(MiniMessage.miniMessage().deserialize(
                     plugin.getMessageLoader().getMessage("Success"),
                     Placeholder.unparsed("price", String.valueOf(price)),
                     Placeholder.unparsed("symbol", plugin.getMessageLoader().getMessage("PlayerPointsCurrencySymbol")),
-                    Placeholder.component("item", stack.displayName())
+                    Placeholder.component("item", stack.displayName()),
+                    Placeholder.unparsed("amount", String.valueOf(amount))
             ));
             player.closeInventory();
         } else {
@@ -86,4 +111,17 @@ public class ConfirmGUIHandler implements Listener {
         }
     }
 
+    private void updateAmount(ConfirmRecord record, CustomStack base, int delta) {
+        int newAmount = Math.min(64, Math.max(1, record.getAmount() + delta));
+        record.setAmount(newAmount);
+        refreshPreview(record, base);
+    }
+
+    private void refreshPreview(ConfirmRecord record, CustomStack base) {
+        ItemStack item = base.getItemStack();
+        item.setAmount(record.getAmount());
+        for (Integer slot : plugin.getConfigLoader().getPreviewSlots()) {
+            record.getInventory().setItem(slot, item);
+        }
+    }
 }

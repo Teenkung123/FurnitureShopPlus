@@ -40,6 +40,14 @@ public class ConfigLoader {
     private final List<Integer> denySlots = new ArrayList<>();
     private final List<Integer> acceptSlots = new ArrayList<>();
     private final List<Integer> previewSlots = new ArrayList<>();
+    private final List<Integer> add1Slots = new ArrayList<>();
+    private final List<Integer> add8Slots = new ArrayList<>();
+    private final List<Integer> add16Slots = new ArrayList<>();
+    private final List<Integer> remove1Slots = new ArrayList<>();
+    private final List<Integer> remove8Slots = new ArrayList<>();
+    private final List<Integer> remove16Slots = new ArrayList<>();
+    private final List<Integer> set1Slots = new ArrayList<>();
+    private final List<Integer> set64Slots = new ArrayList<>();
 
     // Shop items
     private final List<String> invalidItems = new ArrayList<>();
@@ -205,6 +213,14 @@ public class ConfigLoader {
         List<Integer> deny = confirmSection.getIntegerList("Deny");
         List<Integer> accept = confirmSection.getIntegerList("Accept");
         List<Integer> preview = confirmSection.getIntegerList("Preview");
+        List<Integer> add1 = confirmSection.getIntegerList("Add1");
+        List<Integer> add8 = confirmSection.getIntegerList("Add8");
+        List<Integer> add16 = confirmSection.getIntegerList("Add16");
+        List<Integer> remove1 = confirmSection.getIntegerList("Remove1");
+        List<Integer> remove8 = confirmSection.getIntegerList("Remove8");
+        List<Integer> remove16 = confirmSection.getIntegerList("Remove16");
+        List<Integer> set1 = confirmSection.getIntegerList("Set1");
+        List<Integer> set64 = confirmSection.getIntegerList("Set64");
 
         if (deny.isEmpty()) {
             plugin.getLogger().warning("Confirm.Deny is empty or missing in config.");
@@ -219,6 +235,14 @@ public class ConfigLoader {
         denySlots.addAll(deny);
         acceptSlots.addAll(accept);
         previewSlots.addAll(preview);
+        add1Slots.addAll(add1);
+        add8Slots.addAll(add8);
+        add16Slots.addAll(add16);
+        remove1Slots.addAll(remove1);
+        remove8Slots.addAll(remove8);
+        remove16Slots.addAll(remove16);
+        set1Slots.addAll(set1);
+        set64Slots.addAll(set64);
     }
 
     /**
@@ -331,6 +355,38 @@ public class ConfigLoader {
 
     public List<Integer> getPreviewSlots() {
         return Collections.unmodifiableList(previewSlots);
+    }
+
+    public List<Integer> getAdd1Slots() {
+        return Collections.unmodifiableList(add1Slots);
+    }
+
+    public List<Integer> getAdd8Slots() {
+        return Collections.unmodifiableList(add8Slots);
+    }
+
+    public List<Integer> getAdd16Slots() {
+        return Collections.unmodifiableList(add16Slots);
+    }
+
+    public List<Integer> getRemove1Slots() {
+        return Collections.unmodifiableList(remove1Slots);
+    }
+
+    public List<Integer> getRemove8Slots() {
+        return Collections.unmodifiableList(remove8Slots);
+    }
+
+    public List<Integer> getRemove16Slots() {
+        return Collections.unmodifiableList(remove16Slots);
+    }
+
+    public List<Integer> getSet1Slots() {
+        return Collections.unmodifiableList(set1Slots);
+    }
+
+    public List<Integer> getSet64Slots() {
+        return Collections.unmodifiableList(set64Slots);
     }
 
     // Shop Items Getters

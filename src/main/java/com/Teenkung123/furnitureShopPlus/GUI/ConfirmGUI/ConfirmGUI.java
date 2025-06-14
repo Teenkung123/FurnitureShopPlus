@@ -21,11 +21,11 @@ public class ConfirmGUI {
     }
 
     public void openConfirmGUI(Player player , String namespace) {
-        Inventory inv = buildGUI(namespace);
-        player.openInventory(inv);
+        ConfirmRecord record = buildGUI(namespace);
+        player.openInventory(record.getInventory());
     }
 
-    public Inventory buildGUI(String namespace) {
+    public ConfirmRecord buildGUI(String namespace) {
         ShopItem shopItem = plugin.getConfigLoader().getShopItemByName(namespace);
         ConfigLoader configLoader = plugin.getConfigLoader();
         Inventory inventory = Bukkit.createInventory(null, configLoader.getConfirmGUILayoutPattern().size()*9, Colorizer.colorize(configLoader.getConfirmGUIName()));
@@ -42,14 +42,14 @@ public class ConfirmGUI {
 
         CustomStack stack = CustomStack.getInstance(shopItem.namespace());
         if (stack == null) {
-            return inventory;
+            return new ConfirmRecord(inventory, shopItem);
         }
         for (Integer i : configLoader.getPreviewSlots()) {
             inventory.setItem(i, stack.getItemStack());
         }
-
-        plugin.getGuiWrapper().addPluginInventory(new ConfirmRecord(inventory, shopItem));
-        return inventory;
+        ConfirmRecord record = new ConfirmRecord(inventory, shopItem);
+        plugin.getGuiWrapper().addPluginInventory(record);
+        return record;
     }
 
 }
