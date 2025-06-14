@@ -146,7 +146,7 @@ public final class FurnitureShopPlus extends JavaPlugin {
         }
 
         for (ConfirmRecord inv : guiWrapper.getConfirmInventories()) {
-            guiWrapper.removePluginInventory(inv.inventory());
+            guiWrapper.removePluginInventory(inv.getInventory());
         }
     }
 }

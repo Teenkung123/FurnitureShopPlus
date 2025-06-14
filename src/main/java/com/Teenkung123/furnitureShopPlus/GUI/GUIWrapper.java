@@ -27,7 +27,7 @@ public class GUIWrapper implements Listener {
     }
 
     public void addPluginInventory(ConfirmRecord record) {
-        confirmInventories.put(record.inventory(), record);
+        confirmInventories.put(record.getInventory(), record);
     }
 
     public void setPluginInventory(Inventory inventory, ShopGUIRecord record) {

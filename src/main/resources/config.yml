@@ -27,8 +27,8 @@ ConfirmGUI:
   Name: Confirm Purchase
   LayoutPattern:
     - BBBBBBBBB
-    - BDDDPAAAB
-    - BBBBBBBBB
+    - B123PAAAB
+    - B456DSTBB
   Layout:
     B:
       Type: VANILLA
@@ -52,12 +52,52 @@ ConfirmGUI:
       #amount: 1
       #modelData: 0
     P:
-        Type: VANILLA
-        Material: PAPER
-        DisplayName: '&aPreview'
-        Lore: []
-        #amount: 1
-        #modelData: 0
+      Type: VANILLA
+      Material: PAPER
+      DisplayName: '&aPreview'
+      Lore: []
+      #amount: 1
+      #modelData: 0
+    '1':
+      Type: VANILLA
+      Material: LIME_STAINED_GLASS_PANE
+      DisplayName: '&a+1'
+      Lore: []
+    '2':
+      Type: VANILLA
+      Material: LIME_STAINED_GLASS_PANE
+      DisplayName: '&a+8'
+      Lore: []
+    '3':
+      Type: VANILLA
+      Material: LIME_STAINED_GLASS_PANE
+      DisplayName: '&a+16'
+      Lore: []
+    '4':
+      Type: VANILLA
+      Material: RED_STAINED_GLASS_PANE
+      DisplayName: '&c-1'
+      Lore: []
+    '5':
+      Type: VANILLA
+      Material: RED_STAINED_GLASS_PANE
+      DisplayName: '&c-8'
+      Lore: []
+    '6':
+      Type: VANILLA
+      Material: RED_STAINED_GLASS_PANE
+      DisplayName: '&c-16'
+      Lore: []
+    S:
+      Type: VANILLA
+      Material: YELLOW_STAINED_GLASS_PANE
+      DisplayName: '&eSet 1'
+      Lore: []
+    T:
+      Type: VANILLA
+      Material: YELLOW_STAINED_GLASS_PANE
+      DisplayName: '&eSet 64'
+      Lore: []
 
 Shop:
   #Shop Display Location [x, y, z]
@@ -74,6 +114,14 @@ Shop:
   NextPage: [53]
 
 Confirm:
-  Deny: [10, 11, 12]
+  Deny: [22]
   Accept: [14, 15, 16]
   Preview: [13]
+  Add1: [10]
+  Add8: [11]
+  Add16: [12]
+  Remove1: [19]
+  Remove8: [20]
+  Remove16: [21]
+  Set1: [23]
+  Set64: [24]
