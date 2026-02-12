@@ -22,17 +22,22 @@ repositories {
     maven {
         url = 'https://repo.rosewooddev.io/repository/public/'
     }
+    maven {
+        name = 'LoneLibs'
+        url = 'https://www.matteodev.it/spigot/public/maven/'
+    }
     maven { url 'https://jitpack.io' }
     maven { url "https://maven.enginehub.org/repo/" }
+    maven { url "https://maven.devs.beer"}  
 }
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT")
-    compileOnly 'com.github.LoneDev6:API-ItemsAdder:3.6.1'
     compileOnly("de.tr7zw:item-nbt-api-plugin:2.14.0")
     compileOnly "com.github.MilkBowl:VaultAPI:1.7"
     compileOnly 'org.black_ixx:playerpoints:3.2.7'
     compileOnly 'com.sk89q.worldguard:worldguard-bukkit:7.1.0-SNAPSHOT'
+    compileOnly 'dev.lone:api-itemsadder:4.0.10'
 }
 
 def targetJavaVersion = 21

@@ -103,6 +103,12 @@ Shop:
   #Shop Display Location [x, y, z]
   DisplayLocation: [0, 0, 0]
   DisplayWorld: world
+  #Display Yaw Rotation (0-360 degrees)
+  DisplayYaw: 0.0
+  #Auto center display to block center (X and Z only, not Y)
+  AutoCenterDisplay: false
+  #Cleanup radius for removing old entities
+  CleanupRadius: 3.0
   #Worldguard Region
   WorldguardRegion: 'FurnitureShop'
   #Display Interval in Ticks

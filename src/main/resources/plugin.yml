@@ -14,3 +14,31 @@ commands:
     permission: furnitureshopplus.use
     aliases: [ fsp ]
 
+permissions:
+  furnitureshopplus.use:
+    description: Allows using the furniture shop
+    default: true
+  furnitureshopplus.reload:
+    description: Allows reloading the plugin
+    default: op
+  furnitureshopplus.admin.*:
+    description: Grants all admin permissions
+    default: op
+    children:
+      furnitureshopplus.admin.missing: true
+      furnitureshopplus.admin.remove: true
+      furnitureshopplus.admin.purge: true
+      furnitureshopplus.admin.cleanup: true
+  furnitureshopplus.admin.missing:
+    description: Allows listing missing furniture
+    default: op
+  furnitureshopplus.admin.remove:
+    description: Allows removing furniture from shop
+    default: op
+  furnitureshopplus.admin.purge:
+    description: Allows purging all missing furniture
+    default: op
+  furnitureshopplus.admin.cleanup:
+    description: Allows forcing display area cleanup
+    default: op
+

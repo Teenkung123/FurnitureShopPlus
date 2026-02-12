@@ -35,6 +35,9 @@ public class ConfigLoader {
     private String worldguardRegion = "FurnitureShop";
     private Integer displayInterval = 600;
     private Integer PauseDisplayRange = 5;
+    private float displayYaw = 0.0f;
+    private boolean autoCenterDisplay = false;
+    private double cleanupRadius = 3.0;
 
     // Confirm related fields
     private final List<Integer> denySlots = new ArrayList<>();
@@ -194,6 +197,9 @@ public class ConfigLoader {
         this.worldguardRegion = worldguardRegion;
         this.displayInterval = displayInterval;
         this.PauseDisplayRange = PauseDisplayRange;
+        this.displayYaw = (float) shopSection.getDouble("DisplayYaw", 0.0);
+        this.autoCenterDisplay = shopSection.getBoolean("AutoCenterDisplay", false);
+        this.cleanupRadius = shopSection.getDouble("CleanupRadius", 3.0);
 
         shopArea.addAll(areas);
         nextPage.addAll(next);
@@ -297,9 +303,22 @@ public class ConfigLoader {
             ShopItem shopItem = new ShopItem(itemName, currency, price);
             shopItems.put(itemName, shopItem);
 
-            if (CustomStack.isInRegistry(itemName)) {
+            // Validate if furniture exists in ItemsAdder registry
+            if (!CustomStack.isInRegistry(itemName)) {
                 invalidItems.add(itemName);
+                plugin.getLogger().warning("Missing furniture detected: '" + itemName + "' is not registered in ItemsAdder!");
             }
+        }
+
+        // Summary report of missing furniture
+        if (!invalidItems.isEmpty()) {
+            plugin.getLogger().warning("========================================");
+            plugin.getLogger().warning("Found " + invalidItems.size() + " missing furniture item(s) in shop.yml:");
+            for (String missing : invalidItems) {
+                plugin.getLogger().warning("  - " + missing);
+            }
+            plugin.getLogger().warning("Use '/fsp missing' to list or '/fsp purge' to remove them.");
+            plugin.getLogger().warning("========================================");
         }
     }
 
@@ -396,11 +415,11 @@ public class ConfigLoader {
     }
 
     public List<ShopItem> getShopItemsList() {
-        return new ArrayList<>(shopItems.values());
+        return shopItems.values().stream().sorted().toList();
     }
 
     public Integer getShopItemIndex(ShopItem item) {
-        return new ArrayList<>(shopItems.values()).indexOf(item);
+        return getShopItemsList().indexOf(item);
     }
 
     public List<String> getInvalidItems() {
@@ -408,7 +427,7 @@ public class ConfigLoader {
     }
 
     public boolean isInvalidItem(String name) {
-        return !invalidItems.contains(name);
+        return invalidItems.contains(name);
     }
 
     // Displaying related Getters
@@ -427,6 +446,78 @@ public class ConfigLoader {
 
     public int getPauseDisplayRange() {
         return PauseDisplayRange;
+    }
+
+    public float getDisplayYaw() {
+        return displayYaw;
+    }
+
+    public boolean isAutoCenterDisplay() {
+        return autoCenterDisplay;
+    }
+
+    public double getCleanupRadius() {
+        return cleanupRadius;
+    }
+
+    // Furniture Management Methods
+
+    /**
+     * Get list of missing furniture namespaces.
+     */
+    public List<String> getMissingFurniture() {
+        return new ArrayList<>(invalidItems);
+    }
+
+    /**
+     * Remove a furniture item from the shop.
+     */
+    public boolean removeFurnitureFromShop(String namespace) {
+        ShopItem removed = shopItems.remove(namespace);
+        if (removed != null) {
+            invalidItems.remove(namespace);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Save the current shop items to shop.yml.
+     */
+    public void saveShopConfig() throws Exception {
+        File file = new File(plugin.getDataFolder(), "shop.yml");
+        FileConfiguration shopConfig = new YamlConfiguration();
+
+        List<Map<String, Object>> itemsList = new ArrayList<>();
+        for (ShopItem item : shopItems.values()) {
+            Map<String, Object> itemMap = new LinkedHashMap<>();
+            Map<String, Object> properties = new LinkedHashMap<>();
+            properties.put("currency", item.currency());
+            properties.put("price", item.price());
+            itemMap.put(item.namespace(), properties);
+            itemsList.add(itemMap);
+        }
+
+        shopConfig.set("Items", itemsList);
+        shopConfig.save(file);
+    }
+
+    /**
+     * Create a backup of shop.yml in the backup folder.
+     */
+    public String createShopBackup() throws Exception {
+        File backupFolder = new File(plugin.getDataFolder(), "backup");
+        if (!backupFolder.exists()) {
+            backupFolder.mkdirs();
+        }
+
+        String timestamp = new java.text.SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new java.util.Date());
+        String backupFileName = "shop-backup-" + timestamp + ".yml";
+        File backupFile = new File(backupFolder, backupFileName);
+        File originalFile = new File(plugin.getDataFolder(), "shop.yml");
+
+        java.nio.file.Files.copy(originalFile.toPath(), backupFile.toPath());
+        return backupFileName;
     }
 
 }
