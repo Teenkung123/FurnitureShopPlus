@@ -1,6 +1,7 @@
 package com.Teenkung123.furnitureShopPlus;
 
 import com.Teenkung123.furnitureShopPlus.Commands.MainCommand;
+import com.Teenkung123.furnitureShopPlus.Commands.MainCommandTabCompleter;
 import com.Teenkung123.furnitureShopPlus.GUI.ConfirmGUI.ConfirmGUI;
 import com.Teenkung123.furnitureShopPlus.GUI.ConfirmGUI.ConfirmGUIHandler;
 import com.Teenkung123.furnitureShopPlus.GUI.ConfirmGUI.ConfirmRecord;
@@ -20,6 +21,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Logger;
 
+
+/**
+ * TODO:
+ *  - Fix SCALE Multiplier, Right now 1.1 means 110% NOT 10% and 0.5 means 50% NOT -50%
+ *  - Make Auto Updater in case of nerf / buff reforges modifier and it will automatically update every item that have that modifier when player use the item or when join
+ *  - Fix a bug where when modifier changed only assosiated stats will get removed, this propose a bug where if there's a bugged stat (a stat that came from this plugin but doesn't gets tracked by any modifier the item have, the stat will remains there), the fix is make sure to remove every stats that have this plugin's UUID in it before applying new stats
+ */
 public final class FurnitureShopPlus extends JavaPlugin {
 
     private static Logger log;
@@ -56,6 +64,8 @@ public final class FurnitureShopPlus extends JavaPlugin {
 
         //noinspection DataFlowIssue
         getCommand("furnitureshopplus").setExecutor(new MainCommand(this));
+        //noinspection DataFlowIssue
+        getCommand("furnitureshopplus").setTabCompleter(new MainCommandTabCompleter(this));
 
         setupEconomy();
 

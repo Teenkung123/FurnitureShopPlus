@@ -3,6 +3,7 @@ package com.Teenkung123.furnitureShopPlus;
 import com.Teenkung123.furnitureShopPlus.Utils.ItemBuilder;
 import com.Teenkung123.furnitureShopPlus.Utils.ShopItem;
 import dev.lone.itemsadder.api.CustomStack;
+import dev.lone.itemsadder.api.CustomFurniture;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
@@ -304,9 +305,28 @@ public class ConfigLoader {
             shopItems.put(itemName, shopItem);
 
             // Validate if furniture exists in ItemsAdder registry
+            // First check if it's a registered item at all
             if (!CustomStack.isInRegistry(itemName)) {
                 invalidItems.add(itemName);
                 plugin.getLogger().warning("Missing furniture detected: '" + itemName + "' is not registered in ItemsAdder!");
+            }
+            // Then check if it's specifically a furniture item
+            else if (!CustomFurniture.isInRegistry(itemName)) {
+                invalidItems.add(itemName);
+                plugin.getLogger().warning("Invalid furniture detected: '" + itemName + "' is registered but is not a furniture item!");
+            }
+            // Additional validation: try to get the ItemStack to ensure it's properly configured
+            else {
+                try {
+                    CustomStack customStack = CustomStack.getInstance(itemName);
+                    if (customStack == null || customStack.getItemStack() == null) {
+                        invalidItems.add(itemName);
+                        plugin.getLogger().warning("Invalid furniture detected: '" + itemName + "' cannot produce a valid ItemStack!");
+                    }
+                } catch (Exception e) {
+                    invalidItems.add(itemName);
+                    plugin.getLogger().warning("Invalid furniture detected: '" + itemName + "' threw exception during validation: " + e.getMessage());
+                }
             }
         }
 
@@ -428,6 +448,16 @@ public class ConfigLoader {
 
     public boolean isInvalidItem(String name) {
         return invalidItems.contains(name);
+    }
+
+    /**
+     * Mark a furniture item as invalid at runtime (e.g., when spawn fails).
+     * This prevents the plugin from repeatedly trying to spawn broken furniture.
+     */
+    public void markAsInvalid(String namespace) {
+        if (!invalidItems.contains(namespace)) {
+            invalidItems.add(namespace);
+        }
     }
 
     // Displaying related Getters

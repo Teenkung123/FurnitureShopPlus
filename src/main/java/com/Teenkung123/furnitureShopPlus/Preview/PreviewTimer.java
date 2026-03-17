@@ -67,6 +67,24 @@ public class PreviewTimer {
             return;
         }
 
+        // Ensure chunk is loaded before spawning furniture
+        final String finalNamespace = namespace;
+        displayLocation.getWorld().getChunkAtAsync(displayLocation).thenAccept(chunk -> {
+            // Run the actual spawn on the main thread after chunk is loaded
+            // Add a 1-tick delay to ensure entity spawning is properly initialized
+            plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+                spawnFurniture(finalNamespace, displayLocation);
+            }, 1L);
+        }).exceptionally(throwable -> {
+            plugin.getLogger().warning("Failed to load chunk for furniture preview: " + throwable.getMessage());
+            return null;
+        });
+    }
+
+    /**
+     * Actually spawn the furniture after ensuring chunk is loaded.
+     */
+    private void spawnFurniture(String namespace, Location displayLocation) {
         // Enhanced cleanup before spawning new furniture
         tryRemoveArmorStandAndFrames();
         if (furniture != null) {
@@ -81,9 +99,24 @@ public class PreviewTimer {
         try {
             // Calculate spawn location with yaw and optional auto-centering
             Location spawnLocation = calculateSpawnLocation(displayLocation);
+
+            // Double-check that the chunk is loaded (defensive check)
+            if (!spawnLocation.getChunk().isLoaded()) {
+                spawnLocation.getChunk().load();
+            }
+
             furniture = CustomFurniture.spawnPreciseNonSolid(namespace, spawnLocation);
 
-            if (furniture != null && furniture.getEntity() != null) {
+            if (furniture == null) {
+                // Furniture failed to spawn - don't mark as permanently invalid, might be temporary
+                //plugin.getLogger().warning("Failed to spawn furniture '" + namespace + "': spawn returned null.");
+                lastSpawnedEntityUUID = null;
+            } else if (furniture.getEntity() == null) {
+                // Furniture spawned but has no entity - this is usually a configuration issue
+                //plugin.getLogger().warning("Failed to spawn furniture '" + namespace + "': Null entity.");
+                furniture = null;
+                lastSpawnedEntityUUID = null;
+            } else {
                 lastSpawnedEntityUUID = furniture.getEntity().getUniqueId();
             }
         } catch (RuntimeException e) {
